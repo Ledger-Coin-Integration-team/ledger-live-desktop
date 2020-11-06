@@ -112,8 +112,8 @@ const iconsComponent = {
   UNBOND: Unfreeze,
   WITHDRAW_UNBONDED: ClaimRewards,
   SLASH: IconTrash,
-  NOMINATE: null,
-  CHILL: null,
+  NOMINATE: Vote,
+  CHILL: IconUndelegate,
   REWARD_PAYOUT: null,
 };
 
