@@ -44,6 +44,14 @@ import MODAL_ALGORAND_OPT_IN from "../families/algorand/OptInFlowModal";
 import MODAL_ALGORAND_CLAIM_REWARDS from "../families/algorand/Rewards/ClaimRewardsFlowModal";
 import MODAL_ALGORAND_EARN_REWARDS_INFO from "../families/algorand/Rewards/EarnRewardsInfoModal";
 
+import MODAL_POLKADOT_MANAGE from "../families/polkadot/ManageModal";
+import MODAL_POLKADOT_REWARDS_INFO from "../families/polkadot/EarnRewardsInfoModal";
+import MODAL_POLKADOT_SIMPLE_OPERATION from "../families/polkadot/SimpleOperationFlowModal";
+import MODAL_POLKADOT_NOMINATE from "../families/polkadot/NominationFlowModal";
+import MODAL_POLKADOT_BOND from "../families/polkadot/BondFlowModal";
+import MODAL_POLKADOT_UNBOND from "../families/polkadot/UnbondFlowModal";
+import MODAL_POLKADOT_REBOND from "../families/polkadot/RebondFlowModal";
+
 // Lending
 import MODAL_LEND_MANAGE from "../screens/lend/modals/ManageLend";
 import MODAL_LEND_ENABLE_INFO from "../screens/lend/modals/EnableInfoModal";
@@ -91,6 +99,13 @@ const modals: { [_: string]: React$ComponentType<any> } = {
   MODAL_ALGORAND_OPT_IN,
   MODAL_ALGORAND_CLAIM_REWARDS,
   MODAL_ALGORAND_EARN_REWARDS_INFO,
+  MODAL_POLKADOT_MANAGE,
+  MODAL_POLKADOT_REWARDS_INFO,
+  MODAL_POLKADOT_SIMPLE_OPERATION,
+  MODAL_POLKADOT_NOMINATE,
+  MODAL_POLKADOT_BOND,
+  MODAL_POLKADOT_UNBOND,
+  MODAL_POLKADOT_REBOND,
   MODAL_HELP,
   // Lending
   MODAL_LEND_MANAGE,
