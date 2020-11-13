@@ -999,7 +999,8 @@
       "rewards": "Earned rewards",
       "bondedAmount": "Bonded Amount",
       "unbondedAmount": "Unbonded Amount",
-      "palletMethod": "Method"
+      "palletMethod": "Method",
+      "transferAmount": "Transfer Amount"
     }
   },
   "operationList": {
