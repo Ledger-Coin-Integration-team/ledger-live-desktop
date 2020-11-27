@@ -1917,7 +1917,7 @@
         "amount": {
           "title": "Amount",
           "amountLabel": "Amount to bond",
-          "available": "Available: {{amountAvailable}}",
+          "maxLabel": "Available",
           "info": "After unbonding, assets can be withdrawn after a 28-day timelock period."
         },
         "connectDevice": {
@@ -1949,7 +1949,7 @@
         "amount": {
           "title": "Amount",
           "amountLabel": "Amount to rebond",
-          "unlocking": "Unlocking: {{amountUnlocking}}",
+          "maxLabel": "Unlocking",
           "info": "Rebonded assets will be immediately added to bonded balance and will participate in staking for next era."
         },
         "connectDevice": {
@@ -1976,7 +1976,7 @@
         "amount": {
           "title": "Amount",
           "amountLabel": "Amount to unbond",
-          "unlockable": "Unlockable: {{amountUnlockable}}",
+          "maxLabel": "Unlockable",
           "info": "Unbonded assets can be withdrawn after a 28-day timelock period."
         },
         "connectDevice": {
