@@ -1009,7 +1009,8 @@
       "bondedAmount": "Montant lié",
       "unbondedAmount": "Montant délié",
       "palletMethod": "Méthode",
-      "transferAmount": "Montant transféré"
+      "transferAmount": "Montant transféré",
+      "validatorsCount": "Validateurs ({{number}})"
     }
   },
   "operationList": {
