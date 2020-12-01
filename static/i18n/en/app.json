@@ -1000,7 +1000,8 @@
       "bondedAmount": "Bonded Amount",
       "unbondedAmount": "Unbonded Amount",
       "palletMethod": "Method",
-      "transferAmount": "Transfer Amount"
+      "transferAmount": "Transfer Amount",
+      "validatorsCount": "Validators ({{number}})"
     }
   },
   "operationList": {
