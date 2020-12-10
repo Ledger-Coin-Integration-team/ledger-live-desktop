@@ -106,15 +106,13 @@ const iconsComponent = {
   REDEEM: IconWithdraw,
   SUPPLY: IconSupply,
   APPROVE: IconPlus,
-
-  // FIXME: indeed this will conflict. but this fixes a flow error. replace with correct components when doing the conflict merge
   BOND: Freeze,
   UNBOND: Unfreeze,
   WITHDRAW_UNBONDED: ClaimRewards,
   SLASH: IconTrash,
   NOMINATE: Vote,
   CHILL: IconUndelegate,
-  REWARD_PAYOUT: null,
+  REWARD_PAYOUT: ClaimRewards,
 };
 
 class ConfirmationCheck extends PureComponent<{
