@@ -108,10 +108,10 @@ const iconsComponent = {
   APPROVE: IconPlus,
 
   // FIXME: indeed this will conflict. but this fixes a flow error. replace with correct components when doing the conflict merge
-  BOND: null,
-  UNBOND: null,
-  WITHDRAW_UNBONDED: null,
-  SLASH: null,
+  BOND: Freeze,
+  UNBOND: Unfreeze,
+  WITHDRAW_UNBONDED: ClaimRewards,
+  SLASH: IconTrash,
   NOMINATE: null,
   CHILL: null,
   REWARD_PAYOUT: null,
