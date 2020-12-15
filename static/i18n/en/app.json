@@ -1776,11 +1776,11 @@
     }
   },
   "polkadot": {
-    "lockedBalance": "Bonded balance",
+    "lockedBalance": "Bonded",
     "lockedTooltip": "Bonded assets can be used to nominate validators and earn rewards.",
-    "unlockingBalance": "Unbonding balance",
+    "unlockingBalance": "Unbonding",
     "unlockingTooltip": "Unbonding assets stay locked during 28 days before being available for withdrawal.",
-    "unlockedBalance": "Unbonded balance",
+    "unlockedBalance": "Unbonded",
     "unlockedTooltip": "Unbonded assets can now be withdrawn with a transaction.",
     "nomination": {
       "emptyState": {
@@ -1788,9 +1788,9 @@
         "info": "How nomination works"
       },
       "header": "Nominations",
-      "update": "Change validators",
+      "update": "Nominate",
       "nominate": "Nominate",
-      "chill": "Stop nominating",
+      "chill": "Clear nominations",
       "totalStake": "Total Stake",
       "commission": "Commission",
       "active": "Active",
@@ -1808,9 +1808,9 @@
       "electionOpen": "The election of new validators is currently ongoing. As such staking operations are not available for at most 15 minutes.",
       "electionOpenTooltip": "This operation is disabled during validators election",
       "externalControllerTooltip": "This account is controlled by another account.",
-      "externalControllerUnsupported": "<0>This account is controlled by another account with address <0>{{address}}</0>.</0><1>Staking operations on Stash controlled by an external account are not supported in Ledger Live. Please use an alternative wallet like Polkadot.js.</1>",
+      "externalControllerUnsupported": "<0>This account is controlled by another account with address <0>{{address}}</0>.</0><1>Staking operations on a Stash controlled by an external account are not supported in Ledger Live. Please use an alternative wallet like Polkadot.js.</1>",
       "externalStashTooltip": "This account controls another account.",
-      "externalStashUnsupported": "<0>This account controls an external Stash account with address <0>{{address}}</0>.</0><1>Staking operations on external Stash are not supported in Ledger Live. Please use an alternative wallet like Polkadot.js.</1>",
+      "externalStashUnsupported": "<0>This account controls an external Stash account with address <0>{{address}}</0>.</0><1>Staking operations on an external Stash are not supported in Ledger Live. Please use an alternative wallet like Polkadot.js.</1>",
       "showInactiveNominations": "Show inactive nominations ({{count}})",
       "hideInactiveNominations": "Hide inactive nominations",
       "noActiveNominations": "There are no active nominations.",
@@ -1820,9 +1820,8 @@
     "unlockings": {
       "header": "Unbondings",
       "headerTooltip": "Available after the 28-day timelock",
-      "inactiveTooltip": "Unbonded amounts do not generate rewards.",
       "withdrawUnbonded": "Withdraw Unbonded",
-      "withdrawTooltip": "Transfers back unbonded balance.",
+      "withdrawTooltip": "Transfers the unbonded balance to your available balance.",
       "noUnlockedWarning": "No unbonded balance to withdraw yet.",
       "rebond": "Rebond",
       "unbonded": "Unbonded"
@@ -1846,7 +1845,7 @@
         "description": "Choose up to 16 validators to be elected to start earning rewards."
       },
       "chill": {
-        "title": "Stop nominating",
+        "title": "Clear nominations",
         "description": "Remove all your nominations and stop earning rewards."
       }
     },
@@ -1864,7 +1863,7 @@
           "title": "Confirmation",
           "label": "Confirmation",
           "success": {
-            "title": "You have successfully nominated validators",
+            "title": "Nomination transaction broadcasted successfully",
             "text": "You will start earning rewards when your validators are elected and your bonded assets are part of their stake.",
             "cta": "View details"
           },
@@ -1878,11 +1877,11 @@
     "bond": {
       "title": "Bond assets",
       "rewardDestination": {
-        "label": "Reward Destination",
+        "label": "Rewards Destination",
         "stash": "Available Balance",
-        "stashDescription": "The rewards will be transferred to the current account as available balance.",
+        "stashDescription": "The rewards will be transferred to your available balance.",
         "staked": "Bonded Balance",
-        "stakedDescription": "The rewards will be transferred to the current account as bonded balance."
+        "stakedDescription": "The rewards will be transferred to your bonded balance."
       },
       "steps": {
         "starter": {
@@ -1899,7 +1898,7 @@
           "title": "Amount",
           "amountLabel": "Amount to bond",
           "availableLabel": "Available",
-          "maxLabel": "Bond Max",
+          "maxLabel": "Max",
           "info": "Once assets are bonded they can be unbonded any time, but they will be locked for 28-days."
         },
         "connectDevice": {
@@ -1932,7 +1931,7 @@
           "title": "Amount",
           "amountLabel": "Amount to rebond",
           "availableLabel": "Unbonding",
-          "maxLabel": "Rebond Max",
+          "maxLabel": "Max",
           "info": "Rebonded assets will be immediately added to bonded balance."
         },
         "connectDevice": {
