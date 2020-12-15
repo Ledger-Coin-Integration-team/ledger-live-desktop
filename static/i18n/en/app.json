@@ -1796,7 +1796,7 @@
       "active": "Active",
       "activeTooltip": "This validator has been elected and is collecting rewards with some of your bonded assets.",
       "inactive": "Inactive",
-      "inactiveTooltip": "This validator has been elected and is not collecting rewards with your stake.",
+      "inactiveTooltip": "This validator has been elected but is not collecting rewards with your stake.",
       "waiting": "Unelected",
       "waitingTooltip": "This validator has not been elected therefore is not collecting rewards.",
       "notValidator": "Not a validator",
