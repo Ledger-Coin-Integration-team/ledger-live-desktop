@@ -1863,7 +1863,7 @@
           "title": "Confirmation",
           "label": "Confirmation",
           "success": {
-            "title": "Nomination transaction broadcasted successfully",
+            "title": "Transaction broadcasted successfully",
             "text": "You will start earning rewards when your validators are elected and your bonded assets are part of their stake.",
             "cta": "View details"
           },
@@ -1911,7 +1911,7 @@
           },
           "title": "Confirmation",
           "success": {
-            "title": "Assets successfully bonded",
+            "title": "Transaction broadcasted successfully",
             "text": "Your account balance will update once the network has confirmed the transaction.",
             "textNominate": "You will be able to nominate validators once the network has confirmed your transaction.",
             "nominate": "Nominate",
@@ -1941,7 +1941,7 @@
           "title": "Confirmation",
           "label": "Confirmation",
           "success": {
-            "title": "Assets successfully rebonded.",
+            "title": "Transaction broadcasted successfully",
             "text": "Your account balance will update once the network has confirmed the transaction.",
             "cta": "View details"
           },
@@ -1969,7 +1969,7 @@
           "title": "Confirmation",
           "label": "Confirmation",
           "success": {
-            "title": "Assets successfully unbonded",
+            "title": "Transaction broadcasted successfully",
             "text": "Unbonded assets can be withdrawn in 28-days.",
             "cta": "View details"
           },
@@ -2004,7 +2004,7 @@
           "title": "Confirmation",
           "label": "Confirmation",
           "success": {
-            "title": "Transaction successfully sent !",
+            "title": "Transaction broadcasted successfully",
             "text": "You will see your operation in history soon.",
             "cta": "View details"
           },
