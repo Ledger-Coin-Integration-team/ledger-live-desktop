@@ -1819,7 +1819,7 @@
     },
     "unlockings": {
       "header": "Unbondings",
-      "headerTooltip": "Available after the 28-days timelock",
+      "headerTooltip": "Available after the 28-day timelock",
       "withdrawUnbonded": "Withdraw Unbonded",
       "withdrawTooltip": "Transfers the unbonded balance to your available balance.",
       "noUnlockedWarning": "No unbonded balance to withdraw yet.",
@@ -1838,7 +1838,7 @@
       },
       "withdrawUnbonded": {
         "title": "Withdraw Unbonded",
-        "description": "Transfer your unbonded assets back to your available balnce after a 28-days timelock period."
+        "description": "Transfer your unbonded assets back to your available balnce after a 28-day timelock period."
       },
       "nominate": {
         "title": "Nominate",
@@ -1863,7 +1863,7 @@
           "title": "Confirmation",
           "label": "Confirmation",
           "success": {
-            "title": "Transaction broadcasted successfully",
+            "title": "You have successfully nominated validators",
             "text": "You will start earning rewards when your validators are elected and your bonded assets are part of their stake.",
             "cta": "View details"
           },
@@ -1899,7 +1899,7 @@
           "amountLabel": "Amount to bond",
           "availableLabel": "Available",
           "maxLabel": "Max",
-          "info": "Once assets are bonded they can be unbonded any time, but they will be locked for 28-days."
+          "info": "Once assets are bonded they can be unbonded any time, but they will be locked for 28-day."
         },
         "connectDevice": {
           "title": "Device"
@@ -1911,7 +1911,7 @@
           },
           "title": "Confirmation",
           "success": {
-            "title": "Transaction broadcasted successfully",
+            "title": "Assets successfully bonded",
             "text": "Your account balance will update once the network has confirmed the transaction.",
             "textNominate": "You will be able to nominate validators once the network has confirmed your transaction.",
             "nominate": "Nominate",
@@ -1941,7 +1941,7 @@
           "title": "Confirmation",
           "label": "Confirmation",
           "success": {
-            "title": "Transaction broadcasted successfully",
+            "title": "Assets successfully rebonded",
             "text": "Your account balance will update once the network has confirmed the transaction.",
             "cta": "View details"
           },
@@ -1960,7 +1960,7 @@
           "amountLabel": "Amount to unbond",
           "availableLabel": "Bonded",
           "maxLabel": "Max",
-          "info": "Unbonded assets can be withdrawn after a 28-days timelock period."
+          "info": "Unbonded assets can be withdrawn after a 28-day timelock period."
         },
         "connectDevice": {
           "title": "Device"
@@ -1969,7 +1969,7 @@
           "title": "Confirmation",
           "label": "Confirmation",
           "success": {
-            "title": "Transaction broadcasted successfully",
+            "title": "Unbond transaction sent successfully",
             "text": "Unbonded assets can be withdrawn in 28 days.",
             "cta": "View details"
           },
@@ -1984,13 +1984,13 @@
       "modes": {
         "withdrawUnbonded": {
           "title": "Withdraw unbonded",
-          "description": "After a 28-days timelock you can withdraw unbonded assets.",
+          "description": "After a 28-day timelock you can withdraw unbonded assets.",
           "info": "You will fully get back your unbonded assets as available balance."
         },
         "chill": {
           "title": "Stop nominating",
           "description": "You can stop nominating all your validators and stop receiving rewards.",
-          "info": "Bonded assets will stay untouched and will be locked for a 28-days timelock period if you unbonds them."
+          "info": "Bonded assets will stay untouched and will be locked for a 28-day timelock period if you unbonds them."
         }
       },
       "steps": {
@@ -2004,7 +2004,7 @@
           "title": "Confirmation",
           "label": "Confirmation",
           "success": {
-            "title": "Transaction broadcasted successfully",
+            "title": "Transaction sent successfully",
             "text": "You will see your operation in history soon.",
             "cta": "View details"
           },
