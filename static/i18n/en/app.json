@@ -1925,14 +1925,14 @@
           "amountLabel": "Amount to bond",
           "availableLabel": "Available",
           "maxLabel": "Max",
-          "info": " Bonded assets can be unbonded at any time, but unbonding takes 28 days."
+          "info": "Bonded assets can be unbonded at any time, but unbonding takes 28 days."
         },
         "connectDevice": {
           "title": "Device"
         },
         "confirmation": {
           "tooltip": {
-            "title": " Transaction awaiting confirmation",
+            "title": "Transaction awaiting confirmation",
             "desc": "You have to wait a moment before nominating"
           },
           "title": "Confirmation",
