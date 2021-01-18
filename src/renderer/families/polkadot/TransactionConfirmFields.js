@@ -64,6 +64,7 @@ const Warning = ({
     case "unbond":
     case "rebond":
     case "withdrawUnbonded":
+    case "chill":
       return null;
     default:
       return (
