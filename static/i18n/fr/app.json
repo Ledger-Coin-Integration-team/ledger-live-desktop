@@ -1023,6 +1023,7 @@
       "rewards": "Récompenses réclamées",
       "bondedAmount": "Montant lié",
       "unbondedAmount": "Montant délié",
+      "withdrawUnbondedAmount": "Montant délié récupéré",
       "palletMethod": "Méthode",
       "transferAmount": "Montant transféré",
       "validatorsCount": "Validateurs ({{number}})"
