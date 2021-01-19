@@ -235,6 +235,26 @@ const OperationDetailsExtra = ({ extra, type, account }: OperationDetailsExtraPr
           </Box>
         </>
       );
+    case "WITHDRAW_UNBONDED":
+      return (
+        <>
+          <OperationDetailsPalletMethod palletMethod={extra.palletMethod} />
+          <Box>
+            <OpDetailsTitle>
+              <Trans i18nKey="operationDetails.extra.withdrawUnbonded" />
+            </OpDetailsTitle>
+            <OpDetailsData>
+              <FormattedVal
+                val={BigNumber(extra.withdrawUnbondedAmount)}
+                unit={account.unit}
+                showCode
+                fontSize={4}
+                color="palette.text.shade60"
+              />
+            </OpDetailsData>
+          </Box>
+        </>
+      );
     case "REWARD_PAYOUT":
       return (
         <>
@@ -333,6 +353,32 @@ const UnbondAmountCell = ({ operation, currency, unit }: Props) => {
   );
 };
 
+const WithdrawUnbondedAmountCell = ({ operation, currency, unit }: Props) => {
+  const amount = new BigNumber(operation.extra ? operation.extra.withdrawUnbondedAmount : 0);
+
+  return (
+    !amount.isZero() && (
+      <>
+        <FormattedVal
+          val={amount}
+          unit={unit}
+          showCode
+          fontSize={4}
+          color={"palette.text.shade80"}
+        />
+
+        <CounterValue
+          color="palette.text.shade60"
+          fontSize={3}
+          date={operation.date}
+          currency={currency}
+          value={amount}
+        />
+      </>
+    )
+  );
+};
+
 const NominateAmountCell = ({ operation, currency, unit }: Props) => {
   const discreet = useDiscreetMode();
   const amount = operation.extra?.validators?.length || 0;
@@ -354,6 +400,7 @@ const amountCellExtra = {
   BOND: BondAmountCell,
   UNBOND: UnbondAmountCell,
   NOMINATE: NominateAmountCell,
+  WITHDRAW_UNBONDED: WithdrawUnbondedAmountCell,
 };
 
 export default {
