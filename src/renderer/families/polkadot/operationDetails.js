@@ -241,7 +241,7 @@ const OperationDetailsExtra = ({ extra, type, account }: OperationDetailsExtraPr
           <OperationDetailsPalletMethod palletMethod={extra.palletMethod} />
           <Box>
             <OpDetailsTitle>
-              <Trans i18nKey="operationDetails.extra.withdrawUnbonded" />
+              <Trans i18nKey="operationDetails.extra.widthdrawUnbondedAmount" />
             </OpDetailsTitle>
             <OpDetailsData>
               <FormattedVal
