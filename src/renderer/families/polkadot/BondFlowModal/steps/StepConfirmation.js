@@ -1,11 +1,14 @@
 // @flow
 
 import invariant from "invariant";
+import { useSelector } from "react-redux";
 import React, { useCallback, useRef } from "react";
 import { Trans } from "react-i18next";
 import styled, { withTheme } from "styled-components";
 import { usePolkadotBondLoading } from "@ledgerhq/live-common/lib/families/polkadot/react";
 import { isFirstBond } from "@ledgerhq/live-common/lib/families/polkadot/logic";
+
+import { accountSelector } from "~/renderer/reducers/accounts";
 import TrackPage from "~/renderer/analytics/TrackPage";
 import type { ThemedComponent } from "~/renderer/styles/StyleProvider";
 import { multiline } from "~/renderer/styles/helpers";
@@ -88,15 +91,18 @@ function StepConfirmation({
 export function StepConfirmationFooter({
   t,
   transitionTo,
-  account,
+  account: initialAccount,
   onRetry,
   error,
   openModal,
   onClose,
   optimisticOperation,
 }: StepProps) {
-  invariant(account && account.polkadotResources, "polkadot account required");
-  const wasFirstBond = useRef(account && isFirstBond(account));
+  invariant(initialAccount && initialAccount.polkadotResources, "polkadot account required");
+  const wasFirstBond = useRef(initialAccount && isFirstBond(initialAccount));
+  const account = useSelector(s => accountSelector(s, { accountId: initialAccount.id }));
+  invariant(account, "polkadot account still exists");
+
   const isLoading = usePolkadotBondLoading(account);
 
   const openNominate = useCallback(() => {
