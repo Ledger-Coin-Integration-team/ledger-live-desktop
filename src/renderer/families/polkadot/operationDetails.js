@@ -172,6 +172,7 @@ const OperationDetailsExtra = ({ extra, type, account }: OperationDetailsExtraPr
               <FormattedVal
                 val={BigNumber(extra.transferAmount)}
                 unit={account.unit}
+                disableRounding={true}
                 showCode
                 fontSize={4}
                 color="palette.text.shade60"
@@ -206,6 +207,7 @@ const OperationDetailsExtra = ({ extra, type, account }: OperationDetailsExtraPr
                 <FormattedVal
                   val={BigNumber(extra.bondedAmount)}
                   unit={account.unit}
+                  disableRounding={true}
                   showCode
                   fontSize={4}
                   color="palette.text.shade60"
@@ -227,6 +229,7 @@ const OperationDetailsExtra = ({ extra, type, account }: OperationDetailsExtraPr
               <FormattedVal
                 val={BigNumber(extra.unbondedAmount)}
                 unit={account.unit}
+                disableRounding={true}
                 showCode
                 fontSize={4}
                 color="palette.text.shade60"
@@ -247,6 +250,7 @@ const OperationDetailsExtra = ({ extra, type, account }: OperationDetailsExtraPr
               <FormattedVal
                 val={BigNumber(extra.withdrawUnbondedAmount)}
                 unit={account.unit}
+                disableRounding={true}
                 showCode
                 fontSize={4}
                 color="palette.text.shade60"
