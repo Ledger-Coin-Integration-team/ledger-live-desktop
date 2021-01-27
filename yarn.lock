@@ -946,13 +946,6 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.12.5":
-  version "7.12.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
-  integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@babel/template@^7.10.4", "@babel/template@^7.12.7", "@babel/template@^7.3.3":
   version "7.12.7"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.12.7.tgz#c817233696018e39fbb6c491d2fb684e05ed43bc"
@@ -1787,6 +1780,15 @@
     hash.js "^1.1.7"
     randombytes "^2.1.0"
 
+"@polkadot/keyring@^4.0.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@polkadot/keyring/-/keyring-4.2.1.tgz#34bf18ae8cb5822f2ea522c8db62dd0086725ffa"
+  integrity sha512-8kH8jXSIA3I2Gn96o7KjGoLBa7fmc2iB/VKOmEEcMCgJR32HyE8YbeXwc/85OQCheQjG4rJA3RxPQ4CsTsjO7w==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@polkadot/util" "4.2.1"
+    "@polkadot/util-crypto" "4.2.1"
+
 "@polkadot/metadata@2.7.1":
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/@polkadot/metadata/-/metadata-2.7.1.tgz#ad2daf41e2efc21c6c83b2a15469ac40ccb896e7"
@@ -1799,21 +1801,29 @@
     "@polkadot/util-crypto" "^4.1.1"
     bn.js "^5.1.3"
 
-"@polkadot/keyring@^4.0.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@polkadot/keyring/-/keyring-4.2.1.tgz#34bf18ae8cb5822f2ea522c8db62dd0086725ffa"
-  integrity sha512-8kH8jXSIA3I2Gn96o7KjGoLBa7fmc2iB/VKOmEEcMCgJR32HyE8YbeXwc/85OQCheQjG4rJA3RxPQ4CsTsjO7w==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@polkadot/util" "4.2.1"
-    "@polkadot/util-crypto" "4.2.1"
-
 "@polkadot/networks@4.2.1", "@polkadot/networks@^4.0.1":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@polkadot/networks/-/networks-4.2.1.tgz#b0ca69807ed60189f1c958bb27cfeb3cb1c6b12b"
   integrity sha512-T1tg0V0uG09Vdce2O4KfEcWO3/fZh4VYt0bmJ6iPwC+x6yv939X2BKvuFTDDVNT3fqBpGzWQlwiTXYQ15o9bGA==
   dependencies:
     "@babel/runtime" "^7.12.5"
+
+"@polkadot/react-identicon@0.62.1":
+  version "0.62.1"
+  resolved "https://registry.yarnpkg.com/@polkadot/react-identicon/-/react-identicon-0.62.1.tgz#c83b8dd4d0656389c4b5d2dfa2d5d13928a2edc2"
+  integrity sha512-xro8pSO3qxONGJzb/ZG2l95PLqduOojS6qlExRh+InwYiz/gQeUG7U1R1Qjlid/D4lZodo4kvRsoe5b8WORQ3A==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@polkadot/keyring" "^4.0.1"
+    "@polkadot/ui-settings" "0.62.1"
+    "@polkadot/ui-shared" "0.62.1"
+    "@polkadot/util" "^4.0.1"
+    "@polkadot/util-crypto" "^4.0.1"
+    color "^3.1.3"
+    ethereum-blockies-base64 "^1.0.2"
+    jdenticon "2.2.0"
+    react-copy-to-clipboard "^5.0.2"
+    styled-components "^5.2.1"
 
 "@polkadot/types-known@2.7.1":
   version "2.7.1"
@@ -1839,23 +1849,6 @@
     memoizee "^0.4.14"
     rxjs "^6.6.3"
 
-"@polkadot/react-identicon@0.62.1":
-  version "0.62.1"
-  resolved "https://registry.yarnpkg.com/@polkadot/react-identicon/-/react-identicon-0.62.1.tgz#c83b8dd4d0656389c4b5d2dfa2d5d13928a2edc2"
-  integrity sha512-xro8pSO3qxONGJzb/ZG2l95PLqduOojS6qlExRh+InwYiz/gQeUG7U1R1Qjlid/D4lZodo4kvRsoe5b8WORQ3A==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@polkadot/keyring" "^4.0.1"
-    "@polkadot/ui-settings" "0.62.1"
-    "@polkadot/ui-shared" "0.62.1"
-    "@polkadot/util" "^4.0.1"
-    "@polkadot/util-crypto" "^4.0.1"
-    color "^3.1.3"
-    ethereum-blockies-base64 "^1.0.2"
-    jdenticon "2.2.0"
-    react-copy-to-clipboard "^5.0.2"
-    styled-components "^5.2.1"
-
 "@polkadot/ui-settings@0.62.1":
   version "0.62.1"
   resolved "https://registry.yarnpkg.com/@polkadot/ui-settings/-/ui-settings-0.62.1.tgz#8e20d3b6b83a9b441bb1452e9a6d840de3e472f9"
@@ -1875,7 +1868,7 @@
     "@babel/runtime" "^7.12.5"
     color "^3.1.3"
 
-"@polkadot/util-crypto@4.2.1", "@polkadot/util-crypto@^4.0.1":
+"@polkadot/util-crypto@4.2.1", "@polkadot/util-crypto@^4.0.1", "@polkadot/util-crypto@^4.1.1":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@polkadot/util-crypto/-/util-crypto-4.2.1.tgz#a342cd6b400c69ed61cd929917030ed2f43c59d1"
   integrity sha512-U1rCdzBQxVTA854HRpt2d4InDnPCfHD15JiWAwIzjBvq7i59EcTbVSqV02fcwet/KpmT3XYa25xoiff+alzCBA==
@@ -1896,7 +1889,7 @@
     tweetnacl "^1.0.3"
     xxhashjs "^0.2.2"
 
-"@polkadot/util@4.2.1", "@polkadot/util@^4.1.1":
+"@polkadot/util@4.2.1", "@polkadot/util@^4.0.1", "@polkadot/util@^4.1.1":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@polkadot/util/-/util-4.2.1.tgz#1845d03be7e418a14ec2ef929d6288f326f2145d"
   integrity sha512-eO/IFbSDjqVPPWPnARDFydy2Kt992Th+8ByleTkCRqWk0aNYaseO1pGKNdwrYbLfUR3JlyWqvJ60lITeS+qAfQ==
