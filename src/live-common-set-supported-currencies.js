@@ -31,5 +31,4 @@ setSupportedCurrencies([
   "bitcoin_testnet",
   "ethereum_ropsten",
   "algorand",
-  "polkadot",
 ]);
