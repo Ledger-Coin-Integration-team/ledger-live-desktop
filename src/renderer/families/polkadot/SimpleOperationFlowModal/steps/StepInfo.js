@@ -49,9 +49,11 @@ export default function StepInfo({
         </Text>
       </Box>
 
-      <InfoBox onLearnMore={onLearnMore}>
-        <Trans i18nKey={`polkadot.simpleOperation.modes.${mode}.info`} />
-      </InfoBox>
+      {mode !== "withdrawUnbonded" ? (
+        <InfoBox onLearnMore={onLearnMore}>
+          <Trans i18nKey={`polkadot.simpleOperation.modes.${mode}.info`} />
+        </InfoBox>
+      ) : null}
     </Box>
   );
 }
