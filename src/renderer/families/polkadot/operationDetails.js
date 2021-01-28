@@ -24,18 +24,17 @@ import Text from "~/renderer/components/Text";
 import FormattedVal from "~/renderer/components/FormattedVal";
 import CounterValue from "~/renderer/components/CounterValue";
 import { useDiscreetMode } from "~/renderer/components/Discreet";
-
-const helpURL = "https://support.ledger.com/hc/en-us/articles/FIXME";
+import { urls } from "~/config/urls";
 
 function getURLFeesInfo(op: Operation): ?string {
   if (op.fee.gt(200000)) {
-    return helpURL;
+    return urls.polkadotFeesInfo;
   }
 }
 
 function getURLWhatIsThis(op: Operation): ?string {
   if (op.type !== "IN" && op.type !== "OUT") {
-    return helpURL;
+    return urls.stakingPolkadot;
   }
 }
 
