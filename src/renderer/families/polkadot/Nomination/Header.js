@@ -49,6 +49,7 @@ export const Header = () => (
     <TableLine>
       <Trans i18nKey="polkadot.nomination.amount" />
     </TableLine>
+    <TableLine/>
   </Wrapper>
 );
 

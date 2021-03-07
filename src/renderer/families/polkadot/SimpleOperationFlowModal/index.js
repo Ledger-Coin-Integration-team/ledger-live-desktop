@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   stepId: "info",
 };
 
-class SimpleOperationModal extends PureComponent<{ name: string, mode: Mode }, State> {
+class SimpleOperationModal extends PureComponent<{ name: string, mode: Mode, args?: Any }, State> {
   state = INITIAL_STATE;
 
   handleReset = () => this.setState({ ...INITIAL_STATE });
@@ -21,7 +21,7 @@ class SimpleOperationModal extends PureComponent<{ name: string, mode: Mode }, S
 
   render() {
     const { stepId } = this.state;
-    const { name, mode } = this.props;
+    const { name, mode, args } = this.props;
 
     const isModalLocked = ["connectDevice", "confirmation"].includes(stepId);
 
@@ -40,6 +40,7 @@ class SimpleOperationModal extends PureComponent<{ name: string, mode: Mode }, S
             onClose={onClose}
             onChangeStepId={this.handleStepChange}
             params={data || {}}
+            args={args || {}}
           />
         )}
       />

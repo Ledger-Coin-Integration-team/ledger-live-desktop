@@ -40,6 +40,7 @@ type OwnProps = {|
   },
   name: string,
   mode: Mode,
+  args: Any,
 |};
 
 type StateProps = {|
@@ -101,6 +102,7 @@ const Body = ({
   params,
   name,
   mode,
+  args,
 }: Props) => {
   const [optimisticOperation, setOptimisticOperation] = useState(null);
   const [transactionError, setTransactionError] = useState(null);
@@ -127,6 +129,7 @@ const Body = ({
 
     const transaction = bridge.updateTransaction(t, {
       mode,
+      ...args,
     });
 
     return { account, parentAccount: undefined, transaction };
