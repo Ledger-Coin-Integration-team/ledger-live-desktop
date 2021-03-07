@@ -191,6 +191,7 @@ const Nomination = ({ account }: Props) => {
         account={account}
         nomination={nomination}
         validator={validator}
+        electionOpen={electionOpen}
         onExternalLink={onExternalLink}
       />
     ),
