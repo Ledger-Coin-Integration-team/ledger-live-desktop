@@ -22,7 +22,7 @@ import TranslatedError from "~/renderer/components/TranslatedError";
 import Text from "~/renderer/components/Text";
 import Box from "~/renderer/components/Box";
 import BigSpinner from "~/renderer/components/BigSpinner";
-import InfoBox from "~/renderer/components/InfoBox";
+import Alert from "~/renderer/components/Alert";
 import ConnectTroubleshooting from "~/renderer/components/ConnectTroubleshooting";
 import ExportLogsButton from "~/renderer/components/ExportLogsButton";
 import type { ThemedComponent } from "~/renderer/styles/StyleProvider";
@@ -31,7 +31,6 @@ import { DeviceBlocker } from "./DeviceBlocker";
 import ErrorIcon from "~/renderer/components/ErrorIcon";
 import IconTriangleWarning from "~/renderer/icons/TriangleWarning";
 import SupportLinkError from "~/renderer/components/SupportLinkError";
-import { openURL } from "~/renderer/linking";
 import { urls } from "~/config/urls";
 import CurrencyUnitValue from "~/renderer/components/CurrencyUnitValue";
 import ExternalLinkButton from "../ExternalLinkButton";
@@ -422,9 +421,9 @@ export const renderSwapDeviceConfirmation = ({
   exchange: Exchange,
 }) => (
   <>
-    <InfoBox onLearnMore={() => openURL(urls.swap.learnMore)} horizontal={false}>
+    <Alert type="primary" learnMoreUrl={urls.swap.learnMore}>
       <Trans i18nKey="DeviceAction.swap.notice" />
-    </InfoBox>
+    </Alert>
     <Box id="swap-modal-device-confirm" alignItems={"center"} mt={5} mb={5}>
       <Text textAlign="center" ff="Inter|SemiBold" color="palette.text.shade100" fontSize={5}>
         <Trans i18nKey="DeviceAction.swap.confirm" />
@@ -481,9 +480,9 @@ export const renderSellDeviceConfirmation = ({
   type: "light" | "dark",
 }) => (
   <>
-    <InfoBox onLearnMore={() => openURL(urls.swap.learnMore)} horizontal={false}>
+    <Alert type="primary" learnMoreUrl={urls.swap.learnMore} horizontal={false}>
       <Trans i18nKey="DeviceAction.sell.notice" />
-    </InfoBox>
+    </Alert>
     {renderVerifyUnwrapped({ modelId, type })}
     <Box alignItems={"center"}>
       <Text textAlign="center" ff="Inter|SemiBold" color="palette.text.shade100" fontSize={5}>
