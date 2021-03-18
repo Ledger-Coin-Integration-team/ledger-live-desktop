@@ -8,7 +8,7 @@ import { urls } from "~/config/urls";
 
 import { getDefaultExplorerView, getAddressExplorer } from "@ledgerhq/live-common/lib/explorers";
 import { getAccountUnit } from "@ledgerhq/live-common/lib/account";
-import type { Account, TransactionStatus } from "@ledgerhq/live-common/lib/types";
+import type { Account } from "@ledgerhq/live-common/lib/types";
 import type { Transaction, PolkadotPendingReward } from "@ledgerhq/live-common/lib/families/polkadot/types";
 import { usePendingRewardsIdentities } from "@ledgerhq/live-common/lib/families/polkadot/react";
 
@@ -59,10 +59,7 @@ type Props = {
   rewardsLoading: boolean,
   pendingRewards: PolkadotPendingReward[],
   selectedPendingReward: PolkadotPendingReward,
-  //onSelectPendingReward: Function,
-  // FIXME: or this ?
   onSelectPendingReward: (updater: (PolkadotPendingReward) => PolkadotPendingReward) => void,
-  status: TransactionStatus,
 };
 
 const PendingRewardsField = ({
@@ -73,7 +70,6 @@ const PendingRewardsField = ({
   pendingRewards,
   selectedPendingReward,
   onSelectPendingReward,
-  status,
 }: Props) => {
   invariant(account, "polkadot account required");
 
