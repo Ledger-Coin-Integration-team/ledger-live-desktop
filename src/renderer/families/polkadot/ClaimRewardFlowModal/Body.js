@@ -1,6 +1,6 @@
 // @flow
 import invariant from "invariant";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { compose } from "redux";
 import { connect, useDispatch } from "react-redux";
 import { Trans, withTranslation } from "react-i18next";
@@ -10,22 +10,23 @@ import Track from "~/renderer/analytics/Track";
 
 import { UserRefusedOnDevice } from "@ledgerhq/errors";
 
-import { getAccountBridge } from "@ledgerhq/live-common/lib/bridge";
-import useBridgeTransaction from "@ledgerhq/live-common/lib/bridge/useBridgeTransaction";
-
-import type { StepId, StepProps, St, Mode } from "./types";
+import type { StepId, StepProps, St } from "./types";
 import type { Account, Operation } from "@ledgerhq/live-common/lib/types";
 import type { TFunction } from "react-i18next";
 import type { Device } from "@ledgerhq/live-common/lib/hw/actions/types";
-
 import { addPendingOperation } from "@ledgerhq/live-common/lib/account";
+
+import { getAccountBridge } from "@ledgerhq/live-common/lib/bridge";
+import useBridgeTransaction from "@ledgerhq/live-common/lib/bridge/useBridgeTransaction";
+import { getPendingRewards } from "@ledgerhq/live-common/lib/families/polkadot/api";
+
 import { updateAccountWithUpdater } from "~/renderer/actions/accounts";
 
 import { getCurrentDevice } from "~/renderer/reducers/devices";
 import { closeModal, openModal } from "~/renderer/actions/modals";
 
 import Stepper from "~/renderer/components/Stepper";
-import StepInfo, { StepInfoFooter } from "./steps/StepInfo";
+import StepSelectReward, { StepSelectRewardFooter } from "./steps/StepSelectReward";
 import GenericStepConnectDevice from "~/renderer/modals/Send/steps/GenericStepConnectDevice";
 import StepConfirmation, { StepConfirmationFooter } from "./steps/StepConfirmation";
 import logger from "~/logger/logger";
@@ -39,7 +40,6 @@ type OwnProps = {|
     parentAccount: ?Account,
   },
   name: string,
-  mode: Mode,
 |};
 
 type StateProps = {|
@@ -55,32 +55,25 @@ type Props = OwnProps & StateProps;
 
 const steps: Array<St> = [
   {
-    id: "info",
-    label: <Trans i18nKey="polkadot.simpleOperation.steps.info.title" />,
-    component: StepInfo,
-    footer: StepInfoFooter,
+    id: "selectReward",
+    label: <Trans i18nKey="polkadot.claimReward.steps.selectReward.title" />,
+    component: StepSelectReward,
+    noScroll: true,
+    footer: StepSelectRewardFooter,
   },
   {
     id: "connectDevice",
-    label: <Trans i18nKey="polkadot.simpleOperation.steps.connectDevice.title" />,
+    label: <Trans i18nKey="polkadot.claimReward.steps.connectDevice.title" />,
     component: GenericStepConnectDevice,
-    onBack: ({ transitionTo }: StepProps) => transitionTo("info"),
+    onBack: ({ transitionTo }: StepProps) => transitionTo("selectReward"),
   },
   {
     id: "confirmation",
-    label: <Trans i18nKey="polkadot.simpleOperation.steps.confirmation.title" />,
+    label: <Trans i18nKey="polkadot.claimReward.steps.confirmation.title" />,
     component: StepConfirmation,
     footer: StepConfirmationFooter,
   },
 ];
-
-// returns the first error
-function getStatusError(status, type = "errors"): ?Error {
-  if (!status || !status[type]) return null;
-  const firstKey = Object.keys(status[type])[0];
-
-  return firstKey ? status[type][firstKey] : null;
-}
 
 const mapStateToProps = createStructuredSelector({
   device: getCurrentDevice,
@@ -100,37 +93,50 @@ const Body = ({
   onChangeStepId,
   params,
   name,
-  mode,
 }: Props) => {
   const [optimisticOperation, setOptimisticOperation] = useState(null);
   const [transactionError, setTransactionError] = useState(null);
   const [signed, setSigned] = useState(false);
   const dispatch = useDispatch();
 
+  const [rewardsLoading, setLoading] = useState(true);
+  const [rewardsError, setError] = useState(null);
+  const [pendingRewards, setPendingRewards] = useState([]);
+
   const {
     transaction,
     setTransaction,
-    updateTransaction,
     account,
     parentAccount,
     status,
     bridgeError,
     bridgePending,
   } = useBridgeTransaction(() => {
-    const { account } = params;
+    const { account, parentAccount } = params;
 
-    invariant(account, "polkadot: account required");
-
-    const bridge = getAccountBridge(account, undefined);
+    const bridge = getAccountBridge(account, parentAccount);
 
     const t = bridge.createTransaction(account);
 
     const transaction = bridge.updateTransaction(t, {
-      mode,
+      mode: "claimReward",
     });
 
-    return { account, parentAccount: undefined, transaction };
+    return { account, parentAccount, transaction };
   });
+
+  const address = account.freshAddress;
+  
+  useEffect(async () => {
+    if (!rewardsLoading || rewardsError) return;
+    try {
+      const pr = await getPendingRewards(address);
+      setPendingRewards(pr);
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+    }
+  }, [address, rewardsLoading, rewardsError]);
 
   const handleCloseModal = useCallback(() => {
     closeModal(name);
@@ -140,7 +146,7 @@ const Body = ({
 
   const handleRetry = useCallback(() => {
     setTransactionError(null);
-    onChangeStepId("connectDevice");
+    onChangeStepId("selectReward");
   }, [onChangeStepId]);
 
   const handleTransactionError = useCallback((error: Error) => {
@@ -164,8 +170,8 @@ const Body = ({
     [account, dispatch],
   );
 
-  const error = transactionError || bridgeError || getStatusError(status, "errors");
-  const warning = getStatusError(status, "warnings");
+  const error = transactionError || bridgeError || rewardsError;
+  const warning = status.warnings ? Object.values(status.warnings)[0] : null;
 
   const errorSteps = [];
 
@@ -175,10 +181,8 @@ const Body = ({
     errorSteps.push(0);
   }
 
-  const title = t(`polkadot.simpleOperation.modes.${mode}.title`);
-
   const stepperProps = {
-    title,
+    title: t("polkadot.claimReward.title"),
     device,
     account,
     parentAccount,
@@ -188,7 +192,7 @@ const Body = ({
     steps,
     errorSteps,
     disabledSteps: [],
-    hideBreadcrumb: !!error || !!warning,
+    hideBreadcrumb: (!!error || !!warning) && ["selectReward"].includes(stepId),
     onRetry: handleRetry,
     onStepChange: handleStepChange,
     onClose: handleCloseModal,
@@ -199,18 +203,18 @@ const Body = ({
     openModal,
     setSigned,
     onChangeTransaction: setTransaction,
-    onUpdateTransaction: updateTransaction,
     onOperationBroadcasted: handleOperationBroadcasted,
     onTransactionError: handleTransactionError,
     t,
     bridgePending,
-    mode,
+    pendingRewards,
+    rewardsLoading,
   };
 
   return (
     <Stepper {...stepperProps}>
       <SyncSkipUnderPriority priority={100} />
-      <Track onUnmount event="CloseModalSimpleOperation" />
+      <Track onUnmount event="CloseModalClaimReward" />
     </Stepper>
   );
 };

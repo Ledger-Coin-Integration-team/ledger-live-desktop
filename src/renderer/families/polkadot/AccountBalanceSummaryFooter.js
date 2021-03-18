@@ -33,7 +33,7 @@ const BalanceDetail = styled(Box).attrs(() => ({
   vertical: true,
   alignItems: "start",
 }))`
-  &:nth-child(n + 3) {
+  &:nth-child(n + 4) {
     flex: 0.75;
   }
 `;

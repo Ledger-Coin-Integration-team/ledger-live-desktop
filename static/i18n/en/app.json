@@ -1733,6 +1733,7 @@
     "unlockedBalance": "Unbonded",
     "unlockedTooltip": "Unbonded assets can now be moved using the withdraw operation.",
     "networkFees": "Network fees are automatically set by the Polkadot consensus, you won't be able to review them on your device",
+    "era": "Era",
     "nomination": {
       "emptyState": {
         "description": "You can earn rewards by bonding assets and then nominating your validator(s).",
@@ -1741,6 +1742,7 @@
       "header": "Nominations",
       "nominate": "Nominate",
       "chill": "Clear nominations",
+      "claimReward": "Claim rewards",
       "totalStake": "Total Stake",
       "amount": "Bonded Amount",
       "commission": "Commission",
@@ -1828,6 +1830,34 @@
         }
       }
     },
+    "claimReward": {
+      "title": "Claim reward",
+      "steps": {
+        "selectReward": {
+          "title": "Reward",
+          "info": "You can claim rewards for up to 7 days",
+          "loading": "Your pending rewards are loading...",
+          "noResults": "You have no pending reward over the last 7 days",
+          "select": "Select the pending reward you want to claim"
+        },
+        "connectDevice": {
+          "title": "Device"
+        },
+        "confirmation": {
+          "title": "Confirmation",
+          "label": "Confirmation",
+          "success": {
+            "title": "Reward claimed successfully",
+            "text": "Your reward was added to your balance",
+            "cta": "View details"
+          },
+          "pending": {
+            "title": "Broadcasting transaction..."
+          },
+          "broadcastError": "Your transaction may have failed. Please wait a moment then check the transaction history before trying again."
+        }
+      }
+    },
     "bond": {
       "title": "Bond assets",
       "rewardDestination": {
@@ -1855,8 +1885,7 @@
           "amountLabel": "Amount to bond",
           "availableLabel": "Available",
           "maxLabel": "Max",
-          "info": "Bonded assets can be unbonded at any time, but unbonding takes 28 days.",
-          "learnMore": "Learn More"
+          "info": "Bonded assets can be unbonded at any time, but unbonding takes 28 days."
         },
         "connectDevice": {
           "title": "Device"
@@ -1889,8 +1918,7 @@
           "amountLabel": "Amount to rebond",
           "availableLabel": "Unbonding",
           "maxLabel": "Max",
-          "info": "Rebonded assets are immediately added to the bonded amount.",
-          "learnMore": "Learn More"
+          "info": "Rebonded assets are immediately added to the bonded amount."
         },
         "connectDevice": {
           "title": "Device"
@@ -1918,8 +1946,7 @@
           "amountLabel": "Amount to unbond",
           "availableLabel": "Bonded",
           "maxLabel": "Max",
-          "info": "Unbonded assets can be withdrawn after the 28-day unbonding period.",
-          "learnMore": "Learn More"
+          "info": "Unbonded assets can be withdrawn after the 28-day unbonding period."
         },
         "connectDevice": {
           "title": "Device"

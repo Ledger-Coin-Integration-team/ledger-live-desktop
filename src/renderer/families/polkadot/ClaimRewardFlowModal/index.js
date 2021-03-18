@@ -3,16 +3,17 @@
 import React, { PureComponent } from "react";
 import Modal from "~/renderer/components/Modal";
 import Body from "./Body";
-import type { StepId, Mode } from "./types";
+import type { StepId } from "./types";
+
 type State = {
   stepId: StepId,
 };
 
 const INITIAL_STATE = {
-  stepId: "info",
+  stepId: "selectReward",
 };
 
-class SimpleOperationModal extends PureComponent<{ name: string, mode: Mode }, State> {
+class ClaimRewardsModal extends PureComponent<{ name: string }, State> {
   state = INITIAL_STATE;
 
   handleReset = () => this.setState({ ...INITIAL_STATE });
@@ -21,7 +22,7 @@ class SimpleOperationModal extends PureComponent<{ name: string, mode: Mode }, S
 
   render() {
     const { stepId } = this.state;
-    const { name, mode } = this.props;
+    const { name } = this.props;
 
     const isModalLocked = ["connectDevice", "confirmation"].includes(stepId);
 
@@ -32,11 +33,11 @@ class SimpleOperationModal extends PureComponent<{ name: string, mode: Mode }, S
         refocusWhenChange={stepId}
         onHide={this.handleReset}
         preventBackdropClick={isModalLocked}
+        width={720}
         render={({ onClose, data }) => (
           <Body
             stepId={stepId}
             name={name}
-            mode={mode}
             onClose={onClose}
             onChangeStepId={this.handleStepChange}
             params={data || {}}
@@ -47,4 +48,4 @@ class SimpleOperationModal extends PureComponent<{ name: string, mode: Mode }, S
   }
 }
 
-export default SimpleOperationModal;
+export default ClaimRewardsModal;
