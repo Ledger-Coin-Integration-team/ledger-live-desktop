@@ -47,6 +47,8 @@ import MODAL_POLKADOT_MANAGE from "../families/polkadot/ManageModal";
 import MODAL_POLKADOT_REWARDS_INFO from "../families/polkadot/EarnRewardsInfoModal";
 import MODAL_POLKADOT_SIMPLE_OPERATION from "../families/polkadot/SimpleOperationFlowModal";
 import MODAL_POLKADOT_NOMINATE from "../families/polkadot/NominationFlowModal";
+
+import MODAL_POLKADOT_CLAIM_REWARD from "../families/polkadot/ClaimRewardFlowModal";
 import MODAL_POLKADOT_BOND from "../families/polkadot/BondFlowModal";
 import MODAL_POLKADOT_UNBOND from "../families/polkadot/UnbondFlowModal";
 import MODAL_POLKADOT_REBOND from "../families/polkadot/RebondFlowModal";
@@ -102,6 +104,7 @@ const modals: { [_: string]: React$ComponentType<any> } = {
   MODAL_POLKADOT_REWARDS_INFO,
   MODAL_POLKADOT_SIMPLE_OPERATION,
   MODAL_POLKADOT_NOMINATE,
+  MODAL_POLKADOT_CLAIM_REWARD,
   MODAL_POLKADOT_BOND,
   MODAL_POLKADOT_UNBOND,
   MODAL_POLKADOT_REBOND,

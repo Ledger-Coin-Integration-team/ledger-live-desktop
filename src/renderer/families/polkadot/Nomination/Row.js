@@ -1,6 +1,5 @@
 // @flow
 import React, { useCallback, useMemo } from "react";
-import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Trans } from "react-i18next";
 import moment from "moment";
@@ -20,14 +19,11 @@ import type { Account } from "@ledgerhq/live-common/lib/types";
 import { TableLine } from "./Header";
 
 import { useDiscreetMode } from "~/renderer/components/Discreet";
-import { openModal } from "~/renderer/actions/modals";
 import Box from "~/renderer/components/Box/Box";
-import Button from "~/renderer/components/Button";
+import ToolTip from "~/renderer/components/Tooltip";
 import CheckCircle from "~/renderer/icons/CheckCircle";
 import ClockIcon from "~/renderer/icons/Clock";
-import ClaimRewardIcon from "~/renderer/icons/Coins";
 import ExclamationCircle from "~/renderer/icons/ExclamationCircle";
-import ToolTip from "~/renderer/components/Tooltip";
 import ExternalLink from "~/renderer/icons/ExternalLink";
 
 const Wrapper: ThemedComponent<*> = styled.div`
@@ -135,18 +131,6 @@ export function Row({
     [commission],
   );
 
-  const dispatch = useDispatch();
-
-  const onClaimReward = useCallback(() => {
-    dispatch(
-      openModal("MODAL_POLKADOT_SIMPLE_OPERATION", {
-        mode: "claimReward",
-        account,
-        args: {validators: [validator.address]},
-      }),
-    );
-  }, [account, dispatch]);
-
   const onExternalLinkClick = useCallback(() => onExternalLink(address), [onExternalLink, address]);
 
   return (
@@ -207,19 +191,6 @@ export function Row({
       <Column>{formattedCommission}</Column>
       <Column>{formattedTotal}</Column>
       <Column>{formattedAmount}</Column>
-      <Column>
-        <Button
-          id={"nomination-claim-reward-button"}
-          disabled={electionOpen || !status}
-          primary
-          small
-          onClick={onClaimReward}
-        >
-          <Box horizontal flow={1} alignItems="center">
-            <ClaimRewardIcon size={12} />
-          </Box>
-        </Button>
-      </Column>
     </Wrapper>
   );
 }
