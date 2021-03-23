@@ -14,6 +14,7 @@ import {
   hasExternalStash,
   canNominate,
   hasPendingOperationType,
+  hasEnoughBondedBalanceForStaking,
 } from "@ledgerhq/live-common/lib/families/polkadot/logic";
 import { usePolkadotPreloadData } from "@ledgerhq/live-common/lib/families/polkadot/react";
 import { getDefaultExplorerView, getAddressExplorer } from "@ledgerhq/live-common/lib/explorers";
@@ -70,7 +71,18 @@ const Nomination = ({ account }: Props) => {
 
   const dispatch = useDispatch();
 
-  const { staking, validators } = usePolkadotPreloadData();
+  const { staking, validators, minRewarded } = usePolkadotPreloadData();
+
+  const minRewardedFormatted = useMemo(
+    () =>
+      formatCurrencyUnit(unit, minRewarded, {
+        disableRounding: false,
+        alwaysShowSign: false,
+        showCode: true,
+        showAllDigits: false,
+      }),
+    [unit, minRewarded],
+  );
 
   const { polkadotResources } = account;
 
@@ -170,6 +182,7 @@ const Nomination = ({ account }: Props) => {
   const hasUnlockings = unlockings && unlockings.length > 0;
   const hasPendingBondOperation = hasPendingOperationType(account, "BOND");
   const hasPendingWithdrawUnbondedOperation = hasPendingOperationType(account, "WITHDRAW_UNBONDED");
+  const hasEnoughBondedBalance = hasEnoughBondedBalanceForStaking(account, minRewarded);
 
   const nominateEnabled = !electionOpen && canNominate(account);
   const withdrawEnabled =
@@ -311,7 +324,14 @@ const Nomination = ({ account }: Props) => {
               learnMoreLabel={<Trans i18nKey="polkadot.nomination.emptyState.info" />}
               learnMoreOnRight
             >
-              <Trans i18nKey="polkadot.nomination.noActiveNominations" />
+              {hasEnoughBondedBalance ? (
+                <Trans i18nKey="polkadot.nomination.noActiveNominations" />
+              ) : (
+                <Trans
+                  i18nKey="polkadot.nomination.notEnoughBondedBalance"
+                  values={{ amount: minRewardedFormatted }}
+                />
+              )}
             </Alert>
           )}
         </CollapsibleList>

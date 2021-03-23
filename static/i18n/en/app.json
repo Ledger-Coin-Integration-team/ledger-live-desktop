@@ -1767,6 +1767,7 @@
       "showInactiveNominations": "Show all nominations ({{count}})",
       "hideInactiveNominations": "Show active nominations only",
       "noActiveNominations": "There are no active nominations.",
+      "notEnoughBondedBalance": "You don't have enough bonded balance for your nominations to be active, Polkadot consensus required to have at least {{amount}} actively bonded to earn rewards for this era.",
       "showAllUnlockings": "Show all unbonding amounts ({{count}})",
       "hideAllUnlockings": "Hide unbonding amounts"
     },
