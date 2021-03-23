@@ -1848,7 +1848,8 @@
             "Assets will be available again, 28 days after unbonding"
           ],
           "help": "How nominations work",
-          "warning": "Choose your validator wisely: Part of your bonded assets may be irrevocably lost if the validator does not behave appropriately."
+          "warning": "Choose your validator wisely: Part of your bonded assets may be irrevocably lost if the validator does not behave appropriately.",
+          "minRewarded": "For the current era, Polkadot consensus required to have at least {{amount}} bonded to earn reward. Your balance seems to be too low to bond enough funds for staking."
         },
         "amount": {
           "title": "Amount",
