@@ -1856,7 +1856,8 @@
           "availableLabel": "Available",
           "maxLabel": "Max",
           "info": "Bonded assets can be unbonded at any time, but unbonding takes 28 days.",
-          "learnMore": "Learn More"
+          "learnMore": "Learn More",
+          "minRewarded": "For the current era, Polkadot consensus required to have at least {{amount}} bonded to earn reward."
         },
         "connectDevice": {
           "title": "Device"
@@ -3316,6 +3317,9 @@
     },
     "PolkadotMaxUnbonding": {
       "title": "You have exceeded the unbond limit"
+    },
+    "PolkadotNoRewardWarning": {
+      "title": "Bonded balance may not be enough to earn rewards"
     },
     "PolkadotValidatorsRequired": {
       "title": "You must select at least one validator"

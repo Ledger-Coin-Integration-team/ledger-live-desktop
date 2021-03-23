@@ -1,11 +1,14 @@
 // @flow
 import invariant from "invariant";
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Trans } from "react-i18next";
-import { isStash } from "@ledgerhq/live-common/lib/families/polkadot/logic";
 
 import { getAccountBridge } from "@ledgerhq/live-common/lib/bridge";
+import { getAccountUnit } from "@ledgerhq/live-common/lib/account";
+import { formatCurrencyUnit } from "@ledgerhq/live-common/lib/currencies";
 import { SyncSkipUnderPriority } from "@ledgerhq/live-common/lib/bridge/react";
+import { usePolkadotPreloadData } from "@ledgerhq/live-common/lib/families/polkadot/react";
+import { isStash, MINIMUM_BOND_AMOUNT } from "@ledgerhq/live-common/lib/families/polkadot/logic";
 
 import { urls } from "~/config/urls";
 
@@ -32,6 +35,9 @@ export default function StepAmount({
 }: StepProps) {
   invariant(account && transaction, "account and transaction required");
   const bridge = getAccountBridge(account, parentAccount);
+  const unit = getAccountUnit(account);
+
+  const { minRewarded } = usePolkadotPreloadData();
 
   const { rewardDestination } = transaction;
 
@@ -42,8 +48,20 @@ export default function StepAmount({
     [bridge, transaction, onChangeTransaction],
   );
 
+  const minRewardedFormatted = useMemo(
+    () =>
+      formatCurrencyUnit(unit, minRewarded, {
+        disableRounding: false,
+        alwaysShowSign: false,
+        showCode: true,
+        showAllDigits: false,
+      }),
+    [unit, minRewarded],
+  );
+
   // If account is not a stash, it's a fresh bond transaction.
   const showRewardDestination = !isStash(account);
+  const showMinRewardedWarning = MINIMUM_BOND_AMOUNT.lt(minRewarded);
 
   return (
     <Box flow={1}>
@@ -64,6 +82,14 @@ export default function StepAmount({
           onChange={setRewardDestination}
         />
       ) : null}
+      {showMinRewardedWarning && (
+        <Alert type="warning" mb={4}>
+          <Trans
+            i18nKey="polkadot.bond.steps.amount.minRewarded"
+            values={{ amount: minRewardedFormatted }}
+          />
+        </Alert>
+      )}
       <AmountField
         transaction={transaction}
         account={account}

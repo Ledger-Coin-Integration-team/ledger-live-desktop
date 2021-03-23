@@ -84,10 +84,12 @@ const AmountField = ({
   const { useAllAmount } = transaction;
   const { amount, errors, warnings } = status;
   let { amount: amountError } = errors;
+  let { amount: amountWarning } = warnings;
 
   // we ignore zero case for displaying field error because field is empty.
   if (amount.eq(0)) {
     amountError = null;
+    amountWarning = null;
   }
 
   return (
@@ -128,7 +130,7 @@ const AmountField = ({
         disabled={!!useAllAmount}
         autoFocus={true}
         error={amountError}
-        warning={warnings.amount}
+        warning={amountWarning}
         containerProps={{ grow: true }}
         defaultUnit={defaultUnit}
         value={amount}
