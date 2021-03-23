@@ -32,6 +32,7 @@ import ToolTip from "~/renderer/components/Tooltip";
 import InfoCircle from "~/renderer/icons/InfoCircle";
 
 import NominateIcon from "~/renderer/icons/Vote";
+import ClaimReward from "~/renderer/icons/ClaimReward";
 import RebondIcon from "~/renderer/icons/LinkIcon";
 import WithdrawUnbondedIcon from "~/renderer/icons/Coins";
 import ChartLineIcon from "~/renderer/icons/ChartLine";
@@ -139,6 +140,17 @@ const Nomination = ({ account }: Props) => {
     );
   }, [account, dispatch]);
 
+  const onClaimReward = useCallback(
+    () => {
+      dispatch(
+        openModal("MODAL_POLKADOT_CLAIM_REWARD", {
+          account,
+        }),
+      );
+    },
+    [account, dispatch]
+  );
+
   const onWithdrawUnbonded = useCallback(() => {
     dispatch(
       openModal("MODAL_POLKADOT_SIMPLE_OPERATION", {
@@ -191,6 +203,7 @@ const Nomination = ({ account }: Props) => {
         account={account}
         nomination={nomination}
         validator={validator}
+        electionOpen={electionOpen}
         onExternalLink={onExternalLink}
       />
     ),
@@ -300,6 +313,21 @@ const Nomination = ({ account }: Props) => {
                   <NominateIcon size={12} />
                   <Box>
                     <Trans i18nKey="polkadot.nomination.nominate" />
+                  </Box>
+                </Box>
+              </Button>
+              <Button
+                id={"account-claimReward-button"}
+                mr={2}
+                disabled={!nominateEnabled}
+                primary
+                small
+                onClick={onClaimReward}
+              >
+                <Box horizontal flow={1} alignItems="center">
+                  <ClaimReward size={12} />
+                  <Box>
+                    <Trans i18nKey="polkadot.nomination.claimReward" />
                   </Box>
                 </Box>
               </Button>

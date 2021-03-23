@@ -20,10 +20,10 @@ import { TableLine } from "./Header";
 
 import { useDiscreetMode } from "~/renderer/components/Discreet";
 import Box from "~/renderer/components/Box/Box";
+import ToolTip from "~/renderer/components/Tooltip";
 import CheckCircle from "~/renderer/icons/CheckCircle";
 import ClockIcon from "~/renderer/icons/Clock";
 import ExclamationCircle from "~/renderer/icons/ExclamationCircle";
-import ToolTip from "~/renderer/components/Tooltip";
 import ExternalLink from "~/renderer/icons/ExternalLink";
 
 const Wrapper: ThemedComponent<*> = styled.div`
@@ -91,6 +91,7 @@ export function Row({
   account,
   nomination: { value, address, status },
   validator,
+  electionOpen,
   onExternalLink,
 }: Props) {
   const discreet = useDiscreetMode();

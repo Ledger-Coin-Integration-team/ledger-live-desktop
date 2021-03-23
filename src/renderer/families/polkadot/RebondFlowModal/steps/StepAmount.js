@@ -60,7 +60,7 @@ export default function StepAmount({
             <Trans i18nKey="polkadot.rebond.steps.amount.info" />
           </Text>
           <LinkWithExternalIcon
-            label={<Trans i18nKey="polkadot.rebond.steps.amount.learnMore" />}
+            label={<Trans i18nKey="common.learnMore" />}
             onClick={onLearnMore}
           />
         </Box>
