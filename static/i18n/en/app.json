@@ -1841,7 +1841,10 @@
         "selectReward": {
           "title": "Reward",
           "info": "You can claim rewards for up to 7 days",
-          "loading": "Your pending rewards are loading...",
+          "loading": {
+            "info": "Loading your rewards...",
+            "description": "This could take up to 20 seconds"
+          },
           "noResults": "You have no pending reward over the last 7 days",
           "select": "Select the pending reward you want to claim"
         },
